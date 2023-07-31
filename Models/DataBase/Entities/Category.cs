@@ -9,10 +9,11 @@ namespace DapperSample.Windows.UI.Models.DataBase.Entities
 {
     public class Category : IEntity
     {
-        [DbColumnName("category_id")]
-        public int CategoryId { get; set; }
-
-        [DbColumnName("category_name")]
-        public string CategoryName { get; set; }
+        [PrimaryKey]
+        //[DbColumnName("category_id")]
+        public int category_id { get; set; }
+        
+        //[DbColumnName("category_name")]
+        public string category_name { get; set; }
     }
 }

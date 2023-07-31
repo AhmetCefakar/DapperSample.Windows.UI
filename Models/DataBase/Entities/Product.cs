@@ -9,22 +9,23 @@ namespace DapperSample.Windows.UI.Models.DataBase.Entities
 {
     public class Product : IEntity
     {
-        [DbColumnName("product_id")]
-        public int ProductId { get; set; }
+        [PrimaryKey]
+        //[DbColumnName("product_id")]
+        public int product_id { get; set; }
         
-        [DbColumnName("product_name")]
-        public string ProductName { get; set; }
+        //[DbColumnName("product_name")]
+        public string product_name { get; set; }
         
-        [DbColumnName("brand_id")]
-        public int BrandId { get; set; }
+        //[DbColumnName("brand_id")]
+        public int brand_id { get; set; }
 
-        [DbColumnName("category_id")]
-        public int CategoryId { get; set; }
+        //[DbColumnName("category_id")]
+        public int category_id { get; set; }
 
-        [DbColumnName("model_year")]
-        public int ModelYear { get; set; }
+        //[DbColumnName("model_year")]
+        public short model_year { get; set; }
 
-        [DbColumnName("list_price")]
-        public decimal ListPrice { get; set; }
+        //[DbColumnName("list_price")]
+        public decimal list_price { get; set; }
     }
 }

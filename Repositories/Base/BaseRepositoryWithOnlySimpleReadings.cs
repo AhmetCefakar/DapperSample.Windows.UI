@@ -26,26 +26,18 @@ namespace DapperSample.Windows.UI.Repositories.Base
             base.Dispose();
         }
 
-        public T GetById(int id)
-        {
-            string sql = GenerateSelectSql();
-            sql += " WHERE Id = @Id;";
-
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.QueryFirstOrDefault<T>(sql, new { Id = id });
-            }
-        }
-
         public List<T> GetAll()
         {
             string sql = GenerateSelectSql();
 
             using (IDbConnection dbConnection = Connection)
             {
-                dbConnection.Open();
-                return dbConnection.Query<T>(sql).ToList();
+                if (Connection.State == System.Data.ConnectionState.Closed)
+                {
+                    Connection.Open();
+                }
+
+                return Connection.Query<T>(sql).ToList();
             }
         }
     }

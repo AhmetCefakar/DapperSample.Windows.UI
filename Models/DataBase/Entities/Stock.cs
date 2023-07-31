@@ -9,11 +9,12 @@ namespace DapperSample.Windows.UI.Models.DataBase.Entities
 {
     public class Stock : IEntity
     {
-        [DbColumnName("store_id")]
-        public int StoreId { get; set; }
-        [DbColumnName("product_id")]
-        public int ProductId { get; set; }
-        [DbColumnName("quantity")]
-        public int Quantity { get; set; }
+        [PrimaryKey]
+        //[DbColumnName("store_id")]
+        public int store_id { get; set; }
+        //[DbColumnName("product_id")]
+        public int product_id { get; set; }
+        //[DbColumnName("quantity")]
+        public int quantity { get; set; }
     }
 }
