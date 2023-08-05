@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace DapperSample.Windows.UI.Repositories.Base
 {
+    /// <summary>
+    /// Not separated Repository interface
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     //public interface IBaseRepository<T> where T : IEntity
     //{
     //    int InsertData(T item);
@@ -31,13 +35,18 @@ namespace DapperSample.Windows.UI.Repositories.Base
         List<T> GetAll();
     }
 
+    public interface IInsertRepository<T> where T : IEntity
+    {
+        int Insert(T entity);
+    }
+    
     public interface IUpdateRepository<T> where T : IEntity
     {
-        void Update(T entity);
+        int Update(T entity);
     }
 
     public interface IDeleteRepository<T> where T : IEntity
     {
-        void Delete(int id);
+        int Delete(int id);
     }
 }

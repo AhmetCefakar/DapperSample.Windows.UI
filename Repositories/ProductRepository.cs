@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using DapperSample.Windows.UI.Models.DataBase.Entities;
+using DapperSample.Windows.UI.Models.StoreProcedure;
 using DapperSample.Windows.UI.Repositories.Base;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace DapperSample.Windows.UI.Repositories
         public ProductRepository() : base("production.products")
         {
         }
-        
+
         /// <summary>
         /// This method return custom list for product model without paging
         /// </summary>
@@ -26,7 +27,8 @@ namespace DapperSample.Windows.UI.Repositories
 
             using (IDbConnection dbConnection = Connection)
             {
-                dbConnection.Open();
+                if (dbConnection.State != ConnectionState.Open)
+                    dbConnection.Open();
 
                 string _query = @"
                     Select
@@ -44,6 +46,39 @@ namespace DapperSample.Windows.UI.Repositories
             }
 
             return productListViewModels;
+        }
+
+        public int Insert(InsertProductSP item)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                if (dbConnection.State != ConnectionState.Open)
+                    dbConnection.Open();
+
+                return Connection.Execute("[dbo].[InsertProduct]", item, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
+        public int Update(UpdateProductSP item)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                if (dbConnection.State != ConnectionState.Open)
+                    dbConnection.Open();
+
+                return Connection.Execute("[dbo].[UpdateProduct]", item, commandType: System.Data.CommandType.StoredProcedure);
+            }
+        }
+
+        public int Delete(DeleteProductSP item)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                if (dbConnection.State != ConnectionState.Open)
+                    dbConnection.Open();
+
+                return Connection.Execute("[dbo].[DeleteProductByID]", item, commandType: System.Data.CommandType.StoredProcedure);
+            }
         }
     }
 }

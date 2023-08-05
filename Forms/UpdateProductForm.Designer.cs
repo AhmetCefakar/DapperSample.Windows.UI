@@ -84,6 +84,7 @@
             ButtonProductUpdate.TabIndex = 4;
             ButtonProductUpdate.Text = "Update";
             ButtonProductUpdate.UseVisualStyleBackColor = true;
+            ButtonProductUpdate.Click += ButtonProductUpdate_Click;
             // 
             // ButtonProductDelete
             // 
@@ -93,6 +94,7 @@
             ButtonProductDelete.TabIndex = 5;
             ButtonProductDelete.Text = "Delete";
             ButtonProductDelete.UseVisualStyleBackColor = true;
+            ButtonProductDelete.Click += ButtonProductDelete_Click;
             // 
             // label3
             // 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DapperSample.Windows.UI.Models.DataBase
+namespace DapperSample.Windows.UI.Models.StoreProcedure
 {
     public class UpdateProductSP : InsertProductSP
     {

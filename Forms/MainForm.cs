@@ -1,3 +1,4 @@
+using DapperSample.Windows.UI.Forms;
 using DapperSample.Windows.UI.Repositories;
 
 namespace DapperSample.Windows.UI
@@ -22,16 +23,17 @@ namespace DapperSample.Windows.UI
             }
         }
 
-        private void ButtonProductInsert_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void DataGridProductDataSource_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int productId = (int)DataGridProductDataSource.SelectedRows[0].Cells[0].Value; // This grid's first column is int value
             Forms.UpdateProductForm _updateProductForm = new Forms.UpdateProductForm(productId);
             _updateProductForm.ShowDialog(this);
+        }
+
+        private void ButtonProductInsert_Click(object sender, EventArgs e)
+        {
+            InsertProductForm _insertProductForm = new InsertProductForm();
+            _insertProductForm.ShowDialog(this);
         }
     }
 }
